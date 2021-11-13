@@ -1,0 +1,22 @@
+.navlinks {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    color: black;
+}
+
+.navlinks:hover {
+    color: black;
+}
+
+.navlinks.active::before,
+.navlinks:hover::before {
+    content: "";
+    position: absolute;
+    width: 75%;
+    height: 5px;
+    bottom: 0;
+    border-bottom: 3px solid #fffffe;
+}
