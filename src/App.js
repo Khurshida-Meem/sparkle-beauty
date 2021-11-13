@@ -3,6 +3,7 @@ import './App.css';
 import AuthProvider from './contexts/AuthProvider';
 import Home from './Pages/Home/Home/Home';
 import NotFound from './Pages/NotFound/NotFound';
+import SignIn from './Pages/SignIn/SignIn/SignIn/SignIn';
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
             </Route>
             <Route path='/home'>
               <Home></Home>
+            </Route>
+            <Route path='/sign_in'>
+              <SignIn></SignIn>
             </Route>
             <Route path='*'>
               <NotFound></NotFound>

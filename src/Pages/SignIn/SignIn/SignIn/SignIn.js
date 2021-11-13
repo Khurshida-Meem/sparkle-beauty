@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
 import { useHistory, useLocation } from 'react-router';
 import useAuth from '../../../../hooks/useAuth';
 
@@ -19,7 +18,7 @@ const SignIn = () => {
     }
     return (
         <div>
-            <Container className="d-flex justify-content-center my-5 page-size">
+            <div className="d-flex justify-content-center my-5 page-size">
                 {
                     !user ?
                         <div className="text-center">
@@ -28,7 +27,7 @@ const SignIn = () => {
                         <h3 className="pb-5">Wellcome to Hotel Ressort {user.displayName}</h3>
                 }
 
-            </Container>
+            </div>
         </div>
     );
 };
