@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router';
 import useAuth from '../../../../hooks/useAuth';
+import Navigation from '../../../Shared/Navigation/Navigation';
 
 const SignIn = () => {
     const { firebaseContext } = useAuth();
@@ -17,7 +18,9 @@ const SignIn = () => {
             .finally(() => setIsLoading(false));
     }
     return (
+
         <div>
+            <Navigation></Navigation>
             <div className="d-flex justify-content-center my-5 page-size">
                 {
                     !user ?

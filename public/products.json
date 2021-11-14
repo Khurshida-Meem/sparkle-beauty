@@ -1,0 +1,50 @@
+[
+    {
+        "key": 1,
+        "name": "DIOR Rouge Dior Lipstick",
+        "shortDesc": "Rumored to be the lip color worn at the first-ever Christian Dior runway show",
+        "longDesc": "Rumored to be the lip color worn at the first-ever Christian Dior runway show (then known as 9), this is Dior’s best-selling, classic red. It’s often referred to by its other name: “Iconic.”",
+        "price": 38,
+        "thumb": "https://i.ibb.co/7pNJkdD/dior.jpg"
+    },
+    {
+        "key": 2,
+        "name": "M.A.C Lipstick Matte",
+        "shortDesc": "This shade is beloved for its ability to look good on virtually everyone.",
+        "longDesc": "This shade is beloved for its ability to look good on virtually everyone. Celebrity makeup artist Beau Nelson explains its appeal: “It’s a vivid, matte, matte, matte red.” (Yes, he said matte three times for emphasis.) “It takes a little effort to get on, but the velvety-red look is worth it.” It’s also known for being virtually indestructible, lasting from morning to night with meals in between.",
+        "price": 19,
+        "thumb": "https://i.ibb.co/NKBqf82/mac.jpg"
+    },
+    {
+        "key": 3,
+        "name": "YVES SAINT LAURENT",
+        "shortDesc": "The first shade created by Monsieur Saint Laurent in 1979.",
+        "longDesc": "This shade is beloved for its ability to look good on virtually everyone. Celebrity makeup artist Beau Nelson explains its appeal: “It’s a vivid, matte, matte, matte red.” (Yes, he said matte three times for emphasis.) “It takes a little effort to get on, but the velvety-red look is worth it.” It’s also known for being virtually indestructible, lasting from morning to night with meals in between.",
+        "price": 38,
+        "thumb": "https://i.ibb.co/nC5dxTw/laurent.jpg"
+    },
+    {
+        "key": 4,
+        "name": "Revlon Super Lustrous",
+        "shortDesc": "Nelson explains the cult appeal of these two shades",
+        "longDesc": "Nelson explains the cult appeal of these two shades: “Cherries in the Snow is a pink-based red that has literally been around for decades and is a timeless classic. Fire and Ice was maybe the first Hollywood-red lipstick (and matching nail color). The ads asked readers questions and warned that you were only bold enough to wear the shade if you answered at least eight of them with ‘Yes.’”",
+        "price": 3,
+        "thumb": "https://i.ibb.co/x7xb3JX/revlon.jpg"
+    },
+    {
+        "key": 5,
+        "name": "Tom Ford Lip Color",
+        "shortDesc": "Quite simply, one of the best plum-colored lipsticks of all time.",
+        "longDesc": "Nelson explains the cult appeal of these two shades: “Cherries in the Snow is a pink-based red that has literally been around for decades and is a timeless classic. Fire and Ice was maybe the first Hollywood-red lipstick (and matching nail color). The ads asked readers questions and warned that you were only bold enough to wear the shade if you answered at least eight of them with ‘Yes.’”",
+        "price": 54,
+        "thumb": "https://i.ibb.co/NnK1N2H/tom.jpg"
+    },
+    {
+        "key": 6,
+        "name": "Maybelline Color Sensational",
+        "shortDesc": "Quite simply, one of the best plum-colored lipsticks of all time.",
+        "longDesc": "Nelson explains the cult appeal of these two shades: “Cherries in the Snow is a pink-based red that has literally been around for decades and is a timeless classic. Fire and Ice was maybe the first Hollywood-red lipstick (and matching nail color). The ads asked readers questions and warned that you were only bold enough to wear the shade if you answered at least eight of them with ‘Yes.’”",
+        "price": 5,
+        "thumb": "https://i.ibb.co/ZB1Tv4Y/maybeline.jpg"
+    }
+]

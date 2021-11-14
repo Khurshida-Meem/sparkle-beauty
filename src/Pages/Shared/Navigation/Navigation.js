@@ -23,7 +23,7 @@ const Navigation = () => {
     const { user, logOut } = firebaseContext;
     const useStyle = makeStyles({
         navItem: {
-            color: 'white',
+            color: '#33272a !important',
             textDecoration: 'none'
         },
         mobileNavItem: {
@@ -44,19 +44,23 @@ const Navigation = () => {
             [theme.breakpoints.down('sm')]: {
                 textAlign: 'right !important'
             }
+        },
+        navBackground: {
+            backgroundColor: '#ff8ba7 !important'
         }
     })
 
-    const { navItem, navIcon, itemContainer, logoImg, mobileNavItem } = useStyle();
+    const { navItem, navIcon, itemContainer, logoImg, mobileNavItem, navBackground } = useStyle();
 
     // ========================== for mobile view ======================== //
     const [state, setState] = React.useState(false);
-    console.log(user)
+
     return (
-        // large screen navbar
+
         <>
+            {/* ========================== desktop and tab view ============================== */}
             <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static">
+                <AppBar className={navBackground}>
                     <Toolbar>
                         <IconButton
                             size="large"
@@ -75,13 +79,13 @@ const Navigation = () => {
 
 
                         <Box className={itemContainer}>
-                            <Link className={navItem} to='/'><Button color="inherit">Home</Button></Link>
-                            <Link className={navItem} to='/products'><Button color="inherit">Explore</Button></Link>
+                            <Link className={navItem} to='/'><Button color="inherit" sx={{ fontWeight: 'bold' }}>Home</Button></Link>
+                            <Link className={navItem} to='/products'><Button color="inherit" sx={{ fontWeight: 'bold' }} >Explore</Button></Link>
 
-                            {user && <Link className={navItem} to='/sign_in'><Button color="inherit">pay</Button></Link>}
-                            {user && <Link className={navItem} to='/sign_in'><Button color="inherit">My Orders</Button></Link>}
-                            {user && <Link className={navItem} to='/sign_in'><Button color="inherit">Review</Button></Link>}
-                            {user ? <Button onClick={logOut} color="inherit">Sign Out</Button> : <Link className={navItem} to='/sign_in'><Button color="inherit">Sign In</Button></Link>}
+                            {user && <Link className={navItem} to='/sign_in'><Button color="inherit" sx={{ fontWeight: 'bold' }}>pay</Button></Link>}
+                            {user && <Link className={navItem} to='/sign_in'><Button color="inherit" sx={{ fontWeight: 'bold' }}>My Orders</Button></Link>}
+                            {user && <Link className={navItem} to='/sign_in'><Button color="inherit" sx={{ fontWeight: 'bold' }}>Review</Button></Link>}
+                            {user ? <Button onClick={logOut} className={navItem} color="inherit" sx={{ fontWeight: 'bold' }}>Sign Out</Button> : <Link className={navItem} to='/sign_in'><Button color="inherit" sx={{ fontWeight: 'bold' }}>Sign In</Button></Link>}
 
                             {user && <Typography variant="p" sx={{ flexGrow: 1 }}>
                                 {user.displayName}
