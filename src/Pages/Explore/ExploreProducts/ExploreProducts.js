@@ -1,23 +1,21 @@
+import React from 'react';
 import { Container, Grid } from '@mui/material';
 import { Box } from '@mui/system';
-import React from 'react';
-import useData from '../../../hooks/useData';
 import SingleProduct from '../../Shared/SingleProduct/SingleProduct';
+import useData from '../../../hooks/useData';
 
 const contentContainer = {
-    marginTop: '100px',
+    marginTop: '100px'
 
 }
-const HomeProducts = () => {
+const ExploreProducts = () => {
 
     const products = useData('https://sparkle-beauty.herokuapp.com/products');
-    products.splice(6, products.length);
 
     return (
         <Container style={contentContainer}>
             <Box sx={{ fontSize: '24px', m: 1, fontWeight: 'bold', textAlign: 'center' }}>Our Products</Box>
 
-            <Box sx={{ fontSize: '32px', m: 1, fontWeight: 'bold', textAlign: 'center', color: '#ff8ba7', mb: 2 }}>Most Wanted Colors</Box>
             <Box style={{ display: 'flex', justifyContent: 'center' }}>
                 <Grid container spacing={{ xs: 2, md: 3 }} >
                     {
@@ -32,8 +30,7 @@ const HomeProducts = () => {
             </Box>
 
         </Container>
-
     );
 };
 
-export default HomeProducts;
+export default ExploreProducts;

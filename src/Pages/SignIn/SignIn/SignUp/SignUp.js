@@ -1,59 +1,67 @@
+import React, { useState } from 'react';
 import { Alert, Button, Container, Grid, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import React, { useState } from 'react';
-import { useHistory, useLocation } from 'react-router';
-import useAuth from '../../../../hooks/useAuth';
 import img from '../../../../images/login.png'
-import GoogleIcon from '@mui/icons-material/Google';
+import useAuth from '../../../../hooks/useAuth';
+import { useHistory, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
+import { pink } from '@mui/material/colors';
+import HomeIcon from '@mui/icons-material/Home';
 
-const SignIn = () => {
-    const [signinData, setSigninData] = useState({});
+const SignUp = () => {
+    const [signupData, setSignupData] = useState({});
     const { firebaseContext } = useAuth();
-    const { user, signInUsingGoogle, signInUsingEmailandPass, error, setIsLoading, setError } = firebaseContext;
+    const { user, createUsingEmailPassword, error, setError, setUserName, setIsLoading } = firebaseContext;
     const history = useHistory();
     const location = useLocation();
-    const redirect_url = location.state?.from?.pathname || '/home';
+    const redirect_url = location.state?.from || '/home';
 
-    const handleGoogleLogin = () => {
-        signInUsingGoogle()
-            .then(result => {
-                history.push(redirect_url);
-            })
-            .finally(() => setIsLoading(false));
-    }
 
     const handleOnChange = e => {
         const field = e.target.name;
         const value = e.target.value;
-        const newSigninData = { ...signinData };
-        newSigninData[field] = value;
-        setSigninData(newSigninData);
+        const newSignupData = { ...signupData };
+        newSignupData[field] = value;
+        setSignupData(newSignupData);
     }
-    const handleSigninSubmit = e => {
-        signInUsingEmailandPass(signinData.email, signinData.password)
-            .then(() => {
-                setError('');
+    const handleSignupSubmit = e => {
+        e.preventDefault();
+        // password validation
+        if (signupData.password.length < 6) {
+            setError('Password should be 6 charecters');
+            return;
+        }
+        // create account
+        createUsingEmailPassword(signupData.email, signupData.password)
+            .then(result => {
+                setUserName(signupData.username);
                 history.push(redirect_url);
+                window.location.reload();
+                setError('');
             })
             .catch(error => {
                 setError(error.message);
             })
-            .finally(() => setIsLoading(false));
-
-        e.preventDefault();
+            .finally(() => setIsLoading(false))
     }
-    console.log(user)
+
     return (
-
         <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-
             <Box sx={{ mt: 8 }}>
                 <Grid container spacing={2}>
                     <Grid item sx={{ mt: 8 }} xs={12} md={6} lg={6}>
-                        <Typography sx={{ textAlign: 'center' }} variant="h4" gutterBottom>Please Sign in</Typography>
+                        <Typography sx={{ textAlign: 'center' }} variant="h4" gutterBottom>Please Sign Up</Typography>
                         <Box sx={{ textAlign: 'center' }}>
-                            <form sx={{ mt: 8 }} onSubmit={handleSigninSubmit}>
+                            <form sx={{ mt: 8 }} onSubmit={handleSignupSubmit}>
+                                <TextField
+                                    sx={{ width: '75%', m: 1 }}
+                                    required
+                                    id="standard-basic"
+                                    label="Username"
+                                    name="username"
+                                    type="text"
+                                    onChange={handleOnChange}
+                                    variant="standard" />
                                 <TextField
                                     sx={{ width: '75%', m: 1 }}
                                     required
@@ -73,18 +81,19 @@ const SignIn = () => {
                                     onChange={handleOnChange}
                                     variant="standard" />
 
-                                <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Sign In</Button>
+                                <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Sign Up</Button>
 
                             </form>
                         </Box>
+
                         {error && <Box sx={{ textAlign: 'center' }}>
                             <Alert severity="error">{error}</Alert>
                         </Box>}
                         <Box sx={{ textAlign: 'center' }}>
-                            <Button onClick={handleGoogleLogin} variant="contained"><GoogleIcon /> Google Sign In</Button>
+                            <Link to='/sign_in'>Already Registered?</Link>
                         </Box>
                         <Box sx={{ textAlign: 'center' }}>
-                            <Link to='/sign_up'>New to Sparkle Beauty?</Link>
+                            <Link to='/'><HomeIcon sx={{ color: pink[500] }} /> Back to Home</Link>
                         </Box>
                     </Grid>
                     <Grid item xs={12} md={6} lg={6}>
@@ -94,8 +103,7 @@ const SignIn = () => {
             </Box>
 
         </Container>
-
     );
 };
 
-export default SignIn;
+export default SignUp;

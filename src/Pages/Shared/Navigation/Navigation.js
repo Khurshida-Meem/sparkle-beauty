@@ -80,7 +80,7 @@ const Navigation = () => {
 
                         <Box className={itemContainer}>
                             <Link className={navItem} to='/'><Button color="inherit" sx={{ fontWeight: 'bold' }}>Home</Button></Link>
-                            <Link className={navItem} to='/products'><Button color="inherit" sx={{ fontWeight: 'bold' }} >Explore</Button></Link>
+                            <Link className={navItem} to='/explore'><Button color="inherit" sx={{ fontWeight: 'bold' }} >Explore</Button></Link>
 
                             {user && <Link className={navItem} to='/sign_in'><Button color="inherit" sx={{ fontWeight: 'bold' }}>pay</Button></Link>}
                             {user && <Link className={navItem} to='/sign_in'><Button color="inherit" sx={{ fontWeight: 'bold' }}>My Orders</Button></Link>}
@@ -115,7 +115,7 @@ const Navigation = () => {
                                 </ListItem>
                                 <Divider />
                                 <ListItem>
-                                    <Link className={mobileNavItem} to='/products'><Button color="inherit">Explore</Button></Link>
+                                    <Link className={mobileNavItem} to='/explore'><Button color="inherit">Explore</Button></Link>
                                 </ListItem>
                                 <Divider />
                                 {user && <ListItem>

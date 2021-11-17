@@ -12,11 +12,15 @@ p {
 }
 
 .primary-btn {
-  background-color: #ff8ba7;
+  background-color: #f8a5b8;
   color: #33272a;
   border-radius: 5px;
 }
 
 .secondary {
   color: #c3f0ca;
+}
+
+.gradient {
+  background-image: linear-gradient(#f8a5b8, #ffe8ed, #f8a5b8);
 }

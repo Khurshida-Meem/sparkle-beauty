@@ -7,17 +7,12 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const detailsBtn = {
-    backgroundColor: '#c3f0ca',
-    color: '#33272a',
-    fontWeight: 700
-}
+
 const SingleProduct = (props) => {
-    const { product, page } = props;
+    const { product } = props;
     const { name, shortDesc, thumb } = product;
-    console.log(product);
     return (
-        <Grid item xs={4} sm={4} md={4}>
+        <Grid item xs={12} sm={6} md={4}>
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                     component="img"
@@ -34,7 +29,7 @@ const SingleProduct = (props) => {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button variant="contained" style={{ backgroundColor: '#c3f0ca', color: '#33272a', fontWeight: 'bold' }}>Details</Button>
+                    <Button variant="contained" style={{ backgroundColor: '#c3f0ca', color: '#33272a', fontWeight: 'bold' }}>Buy Now</Button>
                 </CardActions>
             </Card>
         </Grid>
