@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Container, Grid } from '@mui/material';
-
 import { Box } from '@mui/system';
+import useData from '../../../hooks/useData'
 import Review from './Review';
 
 const contentContainer = {
@@ -10,12 +10,8 @@ const contentContainer = {
 
 const Reviews = () => {
 
-    const [reviews, setReviews] = useState([]);
-    useEffect(() => {
-        fetch('./reviews.json')
-            .then(res => res.json())
-            .then(data => setReviews(data))
-    }, [])
+    const reviews = useData('https://sparkle-beauty.herokuapp.com/reviews');
+
     return (
         <Container style={contentContainer} sx={{ flexGrow: 1 }}>
             <Box sx={{ fontSize: '24px', m: 1, fontWeight: 'bold', textAlign: 'center' }}>Featured Reviews</Box>
@@ -25,7 +21,7 @@ const Reviews = () => {
             <Grid container spacing={2}>
                 {
                     reviews.map(review => <Review
-                        key={review.key}
+                        key={review._id}
                         review={review}
                     >
                     </Review>)

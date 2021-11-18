@@ -10,8 +10,8 @@ const PrivateRoute = ({ children, ...rest }) => {
     if (isLoading) {
         // spinner
         return (
-            <div className="text-center mt-5">
-                <Loader type="BallTriangle" color="#00BFFF" height={80} width={80} />
+            <div style={{ textAlign: 'center', marginTop: '16px' }}>
+                <Loader type="BallTriangle" color="#f8a5b8" height={80} width={80} />
             </div>
         )
     }
@@ -20,7 +20,7 @@ const PrivateRoute = ({ children, ...rest }) => {
             {...rest}
             render={({ location }) => user ? children : <Redirect
                 to={{
-                    pathname: "/signin",
+                    pathname: "/sign_in",
                     state: { from: location }
                 }}
             ></Redirect>}

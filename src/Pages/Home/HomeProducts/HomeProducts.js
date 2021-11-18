@@ -22,7 +22,7 @@ const HomeProducts = () => {
                 <Grid container spacing={{ xs: 2, md: 3 }} >
                     {
                         products.map(product => <SingleProduct
-                            key={product.key}
+                            key={product._id}
                             product={product}
                             page={'home'}
                         ></SingleProduct>)
