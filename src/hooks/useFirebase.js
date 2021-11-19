@@ -5,47 +5,82 @@ import initializeAuthentication from '../Pages/SignIn/Firebase/firebase.init';
 initializeAuthentication();
 const useFirebase = () => {
     const googleProvider = new GoogleAuthProvider();
-    const [user, setUser] = useState(null);
-    const [error, setError] = useState('')
+    const [user, setUser] = useState({});
+    const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
     const auth = getAuth();
 
     // create user using email password
-    const createUsingEmailPassword = (email, password) => {
-        setIsLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password);
 
-    };
-    // set name 
-    const setUserName = (uname) => {
-        updateProfile(auth.currentUser, { displayName: uname })
-            .then(result => { })
+    const createUsingEmailPassword = (email, password, name, history) => {
+        setIsLoading(true);
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                setError('');
+                const newUser = { email, displayName: name };
+                setUser(newUser);
+                // save user to the database
+                saveUser(email, name, 'POST');
+                // send name to firebase after creation
+                updateProfile(auth.currentUser, {
+                    displayName: name
+                }).then(() => {
+                }).catch((error) => {
+                });
+                history.replace('/');
+            })
+            .catch((error) => {
+                setError(error.message);
+                console.log(error);
+            })
+            .finally(() => setIsLoading(false));
     }
-    // login with email password
-    const signInUsingEmailandPass = (email, password) => {
-        setIsLoading(true);
-        return signInWithEmailAndPassword(auth, email, password);
 
+
+    // login with email password
+    const signInUsingEmailandPass = (email, password, location, history) => {
+        setIsLoading(true);
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const destination = location?.state?.from || '/';
+                history.replace(destination);
+                setError('');
+            })
+            .catch((error) => {
+                setError(error.message);
+            })
+            .finally(() => setIsLoading(false));
     }
     // sign in using google
-    const signInUsingGoogle = () => {
+    const signInUsingGoogle = (location, history) => {
         setIsLoading(true);
-        return signInWithPopup(auth, googleProvider);
+        setIsLoading(true);
+        signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                const user = result.user;
+                saveUser(user.email, user.displayName, 'PUT');
+                setError('');
+                const destination = location?.state?.from || '/';
+                history.replace(destination);
+            }).catch((error) => {
+                setError(error.message);
+            }).finally(() => setIsLoading(false));
     }
 
     // Get the currently signed-in user
     useEffect(() => {
-        const unSubscribed = onAuthStateChanged(auth, user => {
+        const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
+
             } else {
-                setUser(null);
+                setUser({})
             }
             setIsLoading(false);
         });
-        return (() => unSubscribed);
-    }, [])
+        return () => unsubscribed;
+    }, [auth])
 
     // signout
     const logOut = () => {
@@ -73,7 +108,6 @@ const useFirebase = () => {
         isLoading,
         error,
         saveUser,
-        setUserName,
         setError,
         setUser,
         setIsLoading,

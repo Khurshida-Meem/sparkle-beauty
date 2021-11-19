@@ -84,7 +84,7 @@ const Navigation = () => {
 
                             {user && <Link className={navItem} to='/dashboard'><Button color="inherit" sx={{ fontWeight: 'bold' }}>Dashboard</Button></Link>}
 
-                            {user ? <Button onClick={logOut} className={navItem} color="inherit" sx={{ fontWeight: 'bold' }}>Sign Out</Button> : <Link className={navItem} to='/sign_in'><Button color="inherit" sx={{ fontWeight: 'bold' }}>Sign In</Button></Link>}
+                            {user || <Link className={navItem} to='/sign_in'><Button color="inherit" sx={{ fontWeight: 'bold' }}>Sign In</Button></Link>}
 
                             {user && <Typography variant="p" sx={{ flexGrow: 1 }}>
                                 {user.displayName}
@@ -117,27 +117,24 @@ const Navigation = () => {
                                     <Link className={mobileNavItem} to='/explore'><Button color="inherit">Explore</Button></Link>
                                 </ListItem>
                                 <Divider />
-                                {user && <ListItem>
+                                {user.email && <ListItem>
                                     <Link className={mobileNavItem} to='/products'><Button color="inherit">Pay</Button></Link>
                                 </ListItem>}
                                 <Divider />
-                                {user && <ListItem>
+                                {user.email && <ListItem>
                                     <Link className={mobileNavItem} to='/products'><Button color="inherit">My Orders</Button></Link>
                                 </ListItem>}
                                 <Divider />
-                                {user && <ListItem>
+                                {user.email && <ListItem>
                                     <Link className={mobileNavItem} to='/products'><Button color="inherit">Review</Button></Link>
                                 </ListItem>}
                                 <Divider />
-                                {user ? <ListItem>
-                                    <Button onClick={logOut} color="inherit">Sign Out</Button>
+                                {user.email || <ListItem>
+                                    <Link className={mobileNavItem} to='/sign_in'><Button color="inherit">Sign In</Button></Link>
                                 </ListItem>
-                                    : <ListItem>
-                                        <Link className={mobileNavItem} to='/sign_in'><Button color="inherit">Sign In</Button></Link>
-                                    </ListItem>
                                 }
                                 <Divider />
-                                {user && <ListItem><Typography variant="p" sx={{ flexGrow: 1 }}>
+                                {user.email && <ListItem><Typography variant="p" sx={{ flexGrow: 1 }}>
                                     {user.displayName}
                                 </Typography></ListItem>}
                             </List>

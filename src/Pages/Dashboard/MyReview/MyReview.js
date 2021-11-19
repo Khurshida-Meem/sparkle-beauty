@@ -27,6 +27,7 @@ const MyReview = () => {
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Successfully added review');
+                    e.target.reset();
                 }
             })
         e.preventDefault();

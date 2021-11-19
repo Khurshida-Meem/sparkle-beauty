@@ -8,21 +8,14 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { Link } from 'react-router-dom';
 
 const SignIn = () => {
-    const [signinData, setSigninData] = useState({});
+    const [signinData, setSigninData] = useState({ email: '', password: '' });
     const { firebaseContext } = useAuth();
-    const { user, signInUsingGoogle, signInUsingEmailandPass, error, setIsLoading, setError, saveUser } = firebaseContext;
+    const { signInUsingGoogle, signInUsingEmailandPass, error } = firebaseContext;
     const history = useHistory();
     const location = useLocation();
-    const redirect_url = location.state?.from?.pathname || '/home';
 
     const handleGoogleLogin = () => {
-        signInUsingGoogle()
-            .then(result => {
-                const user = result.user;
-                saveUser(user.email, user.displayName, 'PUT');
-                history.push(redirect_url);
-            })
-            .finally(() => setIsLoading(false));
+        signInUsingGoogle(location, history);
     }
 
     const handleOnChange = e => {
@@ -33,19 +26,10 @@ const SignIn = () => {
         setSigninData(newSigninData);
     }
     const handleSigninSubmit = e => {
-        signInUsingEmailandPass(signinData.email, signinData.password)
-            .then(() => {
-                setError('');
-                history.push(redirect_url);
-            })
-            .catch(error => {
-                setError(error.message);
-            })
-            .finally(() => setIsLoading(false));
-
+        signInUsingEmailandPass(signinData?.email, signinData?.password, location, history);
         e.preventDefault();
     }
-    console.log(user)
+
     return (
 
         <Container sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

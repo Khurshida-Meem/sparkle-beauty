@@ -22,10 +22,13 @@ import {
 import MyOrders from '../MyOrders/MyOrders';
 import MyReview from '../MyReview/MyReview';
 import Pay from '../Pay/Pay';
+import AddProduct from '../AddProduct/AddProduct';
+import useAuth from '../../../hooks/useAuth';
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
+
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let { path, url } = useRouteMatch();
@@ -53,6 +56,9 @@ function Dashboard(props) {
                 <Divider />
                 <ListItem>
                     <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/reviews`}><ListItemText primary="Reviews" /></Link>
+                </ListItem>
+                <ListItem>
+                    <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/add_product`}><ListItemText primary="Add Product" /></Link>
                 </ListItem>
                 <Divider />
                 <ListItem>
@@ -137,6 +143,9 @@ function Dashboard(props) {
                         </Route>
                         <Route path={`${path}/pay`} >
                             <Pay></Pay>
+                        </Route>
+                        <Route path={`${path}/add_product`} >
+                            <AddProduct></AddProduct>
                         </Route>
                     </Switch>
                 </Container>

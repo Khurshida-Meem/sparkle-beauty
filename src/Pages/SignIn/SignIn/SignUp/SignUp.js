@@ -3,18 +3,16 @@ import { Alert, Button, Container, Grid, TextField, Typography } from '@mui/mate
 import { Box } from '@mui/system';
 import img from '../../../../images/login.png'
 import useAuth from '../../../../hooks/useAuth';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { pink } from '@mui/material/colors';
 import HomeIcon from '@mui/icons-material/Home';
 
 const SignUp = () => {
-    const [signupData, setSignupData] = useState({});
+    const [signupData, setSignupData] = useState({ email: '', password: '', username: '' });
     const { firebaseContext } = useAuth();
-    const { user, createUsingEmailPassword, error, setError, setUserName, setIsLoading, saveUser } = firebaseContext;
+    const { createUsingEmailPassword, error, setError } = firebaseContext;
     const history = useHistory();
-    const location = useLocation();
-    const redirect_url = location.state?.from || '/home';
 
 
     const handleOnChange = e => {
@@ -27,23 +25,13 @@ const SignUp = () => {
     const handleSignupSubmit = e => {
         e.preventDefault();
         // password validation
-        if (signupData.password.length < 6) {
+        if (signupData?.password?.length < 6) {
             setError('Password should be 6 charecters');
             return;
         }
         // create account
-        createUsingEmailPassword(signupData.email, signupData.password)
-            .then(result => {
-                setUserName(signupData.username);
-                saveUser(signupData.email, signupData.username, 'POST');
-                history.push(redirect_url);
-                window.location.reload();
-                setError('');
-            })
-            .catch(error => {
-                setError(error.message);
-            })
-            .finally(() => setIsLoading(false))
+        createUsingEmailPassword(signupData?.email, signupData?.password, signupData?.username, history)
+
     }
 
     return (

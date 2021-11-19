@@ -41,6 +41,7 @@ const SingleProductDetail = () => {
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Your order have been received');
+                    e.target.reset();
                 }
             })
         e.preventDefault();
