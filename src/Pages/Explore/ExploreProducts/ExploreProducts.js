@@ -25,9 +25,9 @@ const ExploreProducts = () => {
                                 key={product._id}
                                 product={product}
                                 page={'explore'}
-                            ></SingleProduct>) : <Box style={{ textAlign: 'center', marginTop: '16px' }}>
+                            ></SingleProduct>) : <div style={{ textAlign: 'center', marginTop: '16px' }}>
                                 <Loader type="BallTriangle" color="#f8a5b8" height={80} width={80} />
-                            </Box>
+                            </div>
                     }
 
                 </Grid>

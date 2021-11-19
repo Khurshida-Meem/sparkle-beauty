@@ -11,7 +11,7 @@ import HomeIcon from '@mui/icons-material/Home';
 const SignUp = () => {
     const [signupData, setSignupData] = useState({});
     const { firebaseContext } = useAuth();
-    const { user, createUsingEmailPassword, error, setError, setUserName, setIsLoading } = firebaseContext;
+    const { user, createUsingEmailPassword, error, setError, setUserName, setIsLoading, saveUser } = firebaseContext;
     const history = useHistory();
     const location = useLocation();
     const redirect_url = location.state?.from || '/home';
@@ -35,6 +35,7 @@ const SignUp = () => {
         createUsingEmailPassword(signupData.email, signupData.password)
             .then(result => {
                 setUserName(signupData.username);
+                saveUser(signupData.email, signupData.username, 'POST');
                 history.push(redirect_url);
                 window.location.reload();
                 setError('');

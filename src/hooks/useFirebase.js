@@ -55,11 +55,24 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
     }
 
+    // save user to db
+    const saveUser = (email, displayName, method) => {
+        const user = { email, displayName };
+        fetch('https://sparkle-beauty.herokuapp.com/users', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
 
     return {
         user,
         isLoading,
         error,
+        saveUser,
         setUserName,
         setError,
         setUser,

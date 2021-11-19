@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 const SignIn = () => {
     const [signinData, setSigninData] = useState({});
     const { firebaseContext } = useAuth();
-    const { user, signInUsingGoogle, signInUsingEmailandPass, error, setIsLoading, setError } = firebaseContext;
+    const { user, signInUsingGoogle, signInUsingEmailandPass, error, setIsLoading, setError, saveUser } = firebaseContext;
     const history = useHistory();
     const location = useLocation();
     const redirect_url = location.state?.from?.pathname || '/home';
@@ -18,6 +18,8 @@ const SignIn = () => {
     const handleGoogleLogin = () => {
         signInUsingGoogle()
             .then(result => {
+                const user = result.user;
+                saveUser(user.email, user.displayName, 'PUT');
                 history.push(redirect_url);
             })
             .finally(() => setIsLoading(false));

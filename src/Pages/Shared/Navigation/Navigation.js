@@ -82,9 +82,8 @@ const Navigation = () => {
                             <Link className={navItem} to='/'><Button color="inherit" sx={{ fontWeight: 'bold' }}>Home</Button></Link>
                             <Link className={navItem} to='/explore'><Button color="inherit" sx={{ fontWeight: 'bold' }} >Explore</Button></Link>
 
-                            {user && <Link className={navItem} to='/sign_in'><Button color="inherit" sx={{ fontWeight: 'bold' }}>pay</Button></Link>}
-                            {user && <Link className={navItem} to='/sign_in'><Button color="inherit" sx={{ fontWeight: 'bold' }}>My Orders</Button></Link>}
-                            {user && <Link className={navItem} to='/sign_in'><Button color="inherit" sx={{ fontWeight: 'bold' }}>Review</Button></Link>}
+                            {user && <Link className={navItem} to='/dashboard'><Button color="inherit" sx={{ fontWeight: 'bold' }}>Dashboard</Button></Link>}
+
                             {user ? <Button onClick={logOut} className={navItem} color="inherit" sx={{ fontWeight: 'bold' }}>Sign Out</Button> : <Link className={navItem} to='/sign_in'><Button color="inherit" sx={{ fontWeight: 'bold' }}>Sign In</Button></Link>}
 
                             {user && <Typography variant="p" sx={{ flexGrow: 1 }}>
@@ -133,11 +132,6 @@ const Navigation = () => {
                                 {user ? <ListItem>
                                     <Button onClick={logOut} color="inherit">Sign Out</Button>
                                 </ListItem>
-                                    // <ListItem button onClick={logOut} color="inherit">
-                                    //     <ListItemText>
-                                    //         Sign Out
-                                    //     </ListItemText>
-                                    // </ListItem>
                                     : <ListItem>
                                         <Link className={mobileNavItem} to='/sign_in'><Button color="inherit">Sign In</Button></Link>
                                     </ListItem>

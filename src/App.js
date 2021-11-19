@@ -9,6 +9,7 @@ import SingleProductDetail from './Pages/Shared/SingleProduct/SingleProductDetai
 import SignIn from './Pages/SignIn/SignIn/SignIn/SignIn';
 import SignUp from './Pages/SignIn/SignIn/SignUp/SignUp';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
             </Route>
             <PrivateRoute path='/product/:productId'>
               <SingleProductDetail></SingleProductDetail>
+            </PrivateRoute>
+            <PrivateRoute path='/dashboard'>
+              <Dashboard></Dashboard>
             </PrivateRoute>
             <Route path='*'>
               <NotFound></NotFound>

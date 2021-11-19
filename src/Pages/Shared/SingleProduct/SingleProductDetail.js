@@ -6,6 +6,7 @@ import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import Navigation from '../Navigation/Navigation'
 import axios from 'axios';
+import Footer from '../Footer/Footer';
 
 
 
@@ -20,7 +21,7 @@ const SingleProductDetail = () => {
     const initialInfo = { userName: user.displayName, email: user.email }
     // set user information in state to store in database
     const [order, setOrder] = useState(initialInfo);
-
+    const status = 'pending';
     const handleOnChange = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -32,17 +33,16 @@ const SingleProductDetail = () => {
         const orders = {
             ...order,
             name,
-            price
+            price,
+            status
         }
         // send to the server
         axios.post('https://sparkle-beauty.herokuapp.com/orders', orders)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('Your order have been received');
-                    e.target.value = '';
                 }
             })
-        console.log(orders);
         e.preventDefault();
     }
 
@@ -136,12 +136,12 @@ const SingleProductDetail = () => {
                                     onChange={handleOnChange}
                                     variant="standard" />
                                 <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Place Order</Button>
-
                             </form>
                         </Grid>
                     </Grid>
                 </Box>
             </Container>
+            <Footer></Footer>
         </Box>
     );
 };
