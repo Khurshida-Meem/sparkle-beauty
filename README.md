@@ -1,6 +1,6 @@
 # Sparkle Beauty
 
-live project [live](https://github.com/facebook/create-react-app).
+
 
 ## Available Features
 
