@@ -20,7 +20,7 @@ import logo from '../../../images/logo.png'
 const Navigation = () => {
     const theme = useTheme();
     const { firebaseContext } = useAuth();
-    const { user, logOut } = firebaseContext;
+    const { user } = firebaseContext;
     const useStyle = makeStyles({
         navItem: {
             color: '#33272a !important',
