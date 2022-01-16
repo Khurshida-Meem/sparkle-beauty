@@ -6,6 +6,8 @@ import useAuth from '../../../../hooks/useAuth';
 import img from '../../../../images/login.png'
 import GoogleIcon from '@mui/icons-material/Google';
 import { Link } from 'react-router-dom';
+import { pink } from '@mui/material/colors';
+import HomeIcon from '@mui/icons-material/Home';
 
 const SignIn = () => {
     const [signinData, setSigninData] = useState({ email: '', password: '' });
@@ -71,6 +73,9 @@ const SignIn = () => {
                         </Box>
                         <Box sx={{ textAlign: 'center' }}>
                             <Link to='/sign_up'>New to Sparkle Beauty?</Link>
+                        </Box>
+                        <Box sx={{ textAlign: 'center' }}>
+                            <Link to='/'><HomeIcon sx={{ color: pink[500] }} /> Back to Home</Link>
                         </Box>
                     </Grid>
                     <Grid item xs={12} md={6} lg={6}>

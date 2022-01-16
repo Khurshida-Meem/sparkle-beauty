@@ -82,13 +82,13 @@ const Navigation = () => {
                             <Link className={navItem} to='/'><Button color="inherit" sx={{ fontWeight: 'bold' }}>Home</Button></Link>
                             <Link className={navItem} to='/explore'><Button color="inherit" sx={{ fontWeight: 'bold' }} >Explore</Button></Link>
 
-                            {user && <Link className={navItem} to='/dashboard'><Button color="inherit" sx={{ fontWeight: 'bold' }}>Dashboard</Button></Link>}
+                            {user.email && <Link className={navItem} to='/dashboard'><Button color="inherit" sx={{ fontWeight: 'bold' }}>Dashboard</Button></Link>}
 
-                            {user || <Link className={navItem} to='/sign_in'><Button color="inherit" sx={{ fontWeight: 'bold' }}>Sign In</Button></Link>}
-
-                            {user && <Typography variant="p" sx={{ flexGrow: 1 }}>
+                            {user.email && <Typography variant="p" sx={{ flexGrow: 1 }}>
                                 {user.displayName}
                             </Typography>}
+
+                            {user.email ? "" : <Link className={navItem} to='/sign_in'><Button color="inherit" sx={{ fontWeight: 'bold' }}>Sign In</Button></Link>}
                         </Box>
 
                     </Toolbar>

@@ -29,6 +29,9 @@ const drawerWidth = 240;
 
 function Dashboard(props) {
 
+    const { firebaseContext } = useAuth();
+    const { user, logOut } = firebaseContext;
+
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let { path, url } = useRouteMatch();
@@ -62,7 +65,7 @@ function Dashboard(props) {
                 </ListItem>
                 <Divider />
                 <ListItem>
-                    <Button color="inherit">Sign Out</Button>
+                    <Button onClick={logOut} color="inherit">Sign Out</Button>
                 </ListItem>
             </List>
 
