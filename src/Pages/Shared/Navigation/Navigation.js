@@ -95,7 +95,7 @@ const Navigation = () => {
                 </AppBar>
             </Box>
 
-            {/*======================== mobile view ================================*/}
+            {/*======================== mobile view ========================*/}
             <div>
                 <React.Fragment>
                     <SwipeableDrawer
