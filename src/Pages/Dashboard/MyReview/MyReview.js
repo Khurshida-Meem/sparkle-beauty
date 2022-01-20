@@ -2,12 +2,13 @@ import { Button, Container, TextField } from '@mui/material';
 import axios from 'axios';
 import React, { useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
+import MyAllReview from './MyAllReview';
 
 const MyReview = () => {
 
     const { firebaseContext } = useAuth();
     const { user } = firebaseContext;
-    const initialInfo = { userName: user.displayName, thumb: user.photoURL }
+    const initialInfo = { email: user.email, userName: user.displayName, thumb: user.photoURL }
     const [review, setReview] = useState(initialInfo);
     const handleOnChange = e => {
         const field = e.target.name;
@@ -34,32 +35,37 @@ const MyReview = () => {
     }
     return (
         <Container>
-            <div style={{ textAlign: 'center' }}>
-                <h2>Give a Review</h2>
-            </div>
-            <form style={{ textAlign: 'center' }} onSubmit={handleReviewSubmit}>
-                <TextField
-                    sx={{ width: '75%', m: 1 }}
-                    required
-                    id="standard-basic"
-                    label="Rating"
-                    name="rating"
-                    type="number"
-                    placeholder="give a Rating (0-5)"
-                    onChange={handleOnChange}
-                    variant="standard" />
+            <div>
+                <div style={{ textAlign: 'center' }}>
+                    <h2>Give a Review</h2>
+                </div>
+                <form style={{ textAlign: 'center' }} onSubmit={handleReviewSubmit}>
+                    <TextField
+                        sx={{ width: '75%', m: 1 }}
+                        required
+                        id="standard-basic"
+                        label="Rating"
+                        name="rating"
+                        type="number"
+                        placeholder="give a Rating (0-5)"
+                        onChange={handleOnChange}
+                        variant="standard" />
 
-                <TextField
-                    sx={{ width: '75%', m: 1 }}
-                    required
-                    id="standard-basic"
-                    label="Comment"
-                    type="text"
-                    name="description"
-                    onChange={handleOnChange}
-                    variant="standard" />
-                <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Review</Button>
-            </form>
+                    <TextField
+                        sx={{ width: '75%', m: 1 }}
+                        required
+                        id="standard-basic"
+                        label="Comment"
+                        type="text"
+                        name="description"
+                        onChange={handleOnChange}
+                        variant="standard" />
+                    <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Review</Button>
+                </form>
+            </div>
+            <div>
+                <MyAllReview></MyAllReview>
+            </div>
         </Container>
     );
 };
