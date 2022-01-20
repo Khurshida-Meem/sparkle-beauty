@@ -1,11 +1,11 @@
 import React from 'react';
 
-const MakeAdmin = () => {
+const DashboardHome = () => {
     return (
         <div>
-            make me admin
+            I am home
         </div>
     );
 };
 
-export default MakeAdmin;
+export default DashboardHome;

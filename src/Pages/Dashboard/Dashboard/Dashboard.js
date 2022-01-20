@@ -24,6 +24,8 @@ import MyReview from '../MyReview/MyReview';
 import Pay from '../Pay/Pay';
 import AddProduct from '../AddProduct/AddProduct';
 import useAuth from '../../../hooks/useAuth';
+import DashboardHome from '../DashboardHome/DashboardHome';
+import MakeAdmin from '../MakeAdmin/MakeAdmin';
 
 const drawerWidth = 240;
 
@@ -42,7 +44,7 @@ function Dashboard(props) {
 
     const drawer = (
         <div>
-            <Toolbar />
+            <Toolbar style={{ backgroundColor: '#f8a5b8' }} />
             <Divider />
             <List>
                 <ListItem>
@@ -50,18 +52,24 @@ function Dashboard(props) {
                 </ListItem>
                 <Divider />
                 <ListItem>
+                    <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}`}><ListItemText primary="Dashboard" /></Link>
+                </ListItem>
+                <Divider />
+                <ListItem>
+                    <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/make_admin`}><ListItemText primary="Make Admin" /></Link>
+                </ListItem>
+                <Divider />
+                <ListItem>
+                    <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/add_product`}><ListItemText primary="Add Product" /></Link>
+                </ListItem>
+                <Divider />
+                <ListItem>
                     <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/pay`}><ListItemText primary="Pay" /></Link>
                 </ListItem>
                 <Divider />
-                <ListItem>
-                    <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}`}><ListItemText primary="My Orders" /></Link>
-                </ListItem>
-                <Divider />
+
                 <ListItem>
                     <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/reviews`}><ListItemText primary="Reviews" /></Link>
-                </ListItem>
-                <ListItem>
-                    <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/add_product`}><ListItemText primary="Add Product" /></Link>
                 </ListItem>
                 <Divider />
                 <ListItem>
@@ -84,7 +92,7 @@ function Dashboard(props) {
                     ml: { sm: `${drawerWidth}px` },
                 }}
             >
-                <Toolbar>
+                <Toolbar style={{ backgroundColor: '#f8a5b8' }} >
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -94,7 +102,7 @@ function Dashboard(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
+                    <Typography style={{ color: 'black', fontWeight: 600 }} variant="h6" noWrap component="div">
                         My Profile
                     </Typography>
                 </Toolbar>
@@ -140,6 +148,9 @@ function Dashboard(props) {
                     <Switch>
                         <Route exact path={path}>
                             <MyOrders></MyOrders>
+                        </Route>
+                        <Route path={`${path}/make_admin`} >
+                            <MakeAdmin></MakeAdmin>
                         </Route>
                         <Route path={`${path}/reviews`} >
                             <MyReview></MyReview>
