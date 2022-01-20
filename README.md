@@ -1,6 +1,6 @@
 # Sparkle Beauty
 
-
+This project is live on [Live Site](https://sparkle-lipsticks.web.app/).
 
 ## Available Features
 

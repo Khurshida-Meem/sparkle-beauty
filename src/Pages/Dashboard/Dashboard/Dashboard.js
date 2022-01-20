@@ -24,7 +24,6 @@ import MyReview from '../MyReview/MyReview';
 import Pay from '../Pay/Pay';
 import AddProduct from '../AddProduct/AddProduct';
 import useAuth from '../../../hooks/useAuth';
-import DashboardHome from '../DashboardHome/DashboardHome';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 
 const drawerWidth = 240;

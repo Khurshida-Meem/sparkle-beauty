@@ -23,7 +23,7 @@ const Footer = () => {
                 </Toolbar>
             </Container>
             <Typography variant="body1" sx={{ textAlign: 'center' }}>
-                © 2021 Sparkle Beauty
+                © 2021 || All rights reserved by Khurshida Jahan Meem
             </Typography>
         </AppBar>
     );
