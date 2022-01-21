@@ -25,13 +25,14 @@ import Pay from '../Pay/Pay';
 import AddProduct from '../AddProduct/AddProduct';
 import useAuth from '../../../hooks/useAuth';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
+import AdminRoute from '../../SignIn/AdminRoute/AdminRoute';
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
 
     const { firebaseContext } = useAuth();
-    const { user, logOut } = firebaseContext;
+    const { admin, logOut } = firebaseContext;
 
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -55,22 +56,25 @@ function Dashboard(props) {
                 </ListItem>
                 <Divider />
                 <ListItem>
-                    <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/make_admin`}><ListItemText primary="Make Admin" /></Link>
-                </ListItem>
-                <Divider />
-                <ListItem>
-                    <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/add_product`}><ListItemText primary="Add Product" /></Link>
-                </ListItem>
-                <Divider />
-                <ListItem>
                     <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/pay`}><ListItemText primary="Pay" /></Link>
                 </ListItem>
                 <Divider />
-
                 <ListItem>
                     <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/reviews`}><ListItemText primary="Reviews" /></Link>
                 </ListItem>
                 <Divider />
+
+                {/* for admin view */}
+                {admin && <Box>
+                    <ListItem>
+                        <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/make_admin`}><ListItemText primary="Make Admin" /></Link>
+                    </ListItem>
+                    <Divider />
+                    <ListItem>
+                        <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/add_product`}><ListItemText primary="Add Product" /></Link>
+                    </ListItem>
+                    <Divider />
+                </Box>}
                 <ListItem>
                     <Button onClick={logOut} color="inherit">Sign Out</Button>
                 </ListItem>
@@ -148,18 +152,19 @@ function Dashboard(props) {
                         <Route exact path={path}>
                             <MyOrders></MyOrders>
                         </Route>
-                        <Route path={`${path}/make_admin`} >
-                            <MakeAdmin></MakeAdmin>
-                        </Route>
                         <Route path={`${path}/reviews`} >
                             <MyReview></MyReview>
                         </Route>
                         <Route path={`${path}/pay`} >
                             <Pay></Pay>
                         </Route>
-                        <Route path={`${path}/add_product`} >
+                        {/* for admin */}
+                        <AdminRoute path={`${path}/make_admin`} >
+                            <MakeAdmin></MakeAdmin>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/add_product`} >
                             <AddProduct></AddProduct>
-                        </Route>
+                        </AdminRoute>
                     </Switch>
                 </Container>
             </Box>

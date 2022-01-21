@@ -8,6 +8,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [admin, setAdmin] = useState(false);
 
     const auth = getAuth();
 
@@ -82,6 +83,13 @@ const useFirebase = () => {
         return () => unsubscribed;
     }, [auth])
 
+    // for admin and normal user check
+    useEffect(() => {
+        fetch(`https://sparkle-beauty.herokuapp.com/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
+
     // signout
     const logOut = () => {
         setIsLoading(true);
@@ -105,6 +113,7 @@ const useFirebase = () => {
 
     return {
         user,
+        admin,
         isLoading,
         error,
         saveUser,
