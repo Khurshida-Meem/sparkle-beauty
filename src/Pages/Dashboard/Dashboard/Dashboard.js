@@ -28,6 +28,7 @@ import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AdminRoute from '../../SignIn/AdminRoute/AdminRoute';
 import AllOrders from '../AllOrders/AllOrders';
 import OrderByCatagory from '../AllOrders/OrderByCatagory';
+import AllReviews from '../AllReviews/AllReviews';
 
 const drawerWidth = 240;
 
@@ -82,6 +83,10 @@ function Dashboard(props) {
                     <Divider />
                     <ListItem>
                         <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/add_product`}><ListItemText primary="Add Product" /></Link>
+                    </ListItem>
+                    <Divider />
+                    <ListItem>
+                        <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/all_reviews`}><ListItemText primary="Manage Reviews" /></Link>
                     </ListItem>
                     <Divider />
                 </Box>}
@@ -182,6 +187,9 @@ function Dashboard(props) {
                         </AdminRoute>
                         <AdminRoute path={`${path}/add_product`} >
                             <AddProduct></AddProduct>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/all_reviews`} >
+                            <AllReviews></AllReviews>
                         </AdminRoute>
                     </Switch>
                 </Container>

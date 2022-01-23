@@ -1,23 +1,12 @@
 import { Button, Container, Paper, Rating, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import useAuth from '../../../hooks/useAuth';
 
-const MyAllReview = () => {
+const AllReviews = () => {
 
     const [reviews, setReviews] = useState([]);
-    const { firebaseContext } = useAuth();
-    const { user } = firebaseContext;
-    const email = [user.email];
 
-    // get order by email 
     useEffect(() => {
-        fetch('https://sparkle-beauty.herokuapp.com/reviews/byEmail', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(email)
-        })
+        fetch('https://sparkle-beauty.herokuapp.com/reviews')
             .then(res => res.json())
             .then(data => {
                 if (data.length) {
@@ -27,7 +16,6 @@ const MyAllReview = () => {
             })
     }, [reviews])
 
-    // delete review
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to delete?');
         if (proceed) {
@@ -50,7 +38,7 @@ const MyAllReview = () => {
     return (
         <Container>
             <div style={{ textAlign: 'center' }}>
-                <h2>My Reviews</h2>
+                <h2>All Reviews</h2>
             </div>
             <div>
                 <TableContainer component={Paper}>
@@ -58,6 +46,7 @@ const MyAllReview = () => {
                         <TableHead>
                             <TableRow>
                                 <TableCell>Name</TableCell>
+                                <TableCell>Email</TableCell>
                                 <TableCell>Rating</TableCell>
                                 <TableCell>Description</TableCell>
                                 <TableCell></TableCell>
@@ -72,6 +61,7 @@ const MyAllReview = () => {
                                     <TableCell component="th" scope="row">
                                         {row.userName}
                                     </TableCell>
+                                    <TableCell>{row.email}</TableCell>
                                     <TableCell><Rating name="rating" value={row.rating} readOnly /></TableCell>
                                     <TableCell>{row.description}</TableCell>
                                     <TableCell> <Button onClick={() => handleDelete(row._id)} color="inherit">Delete</Button></TableCell>
@@ -85,4 +75,4 @@ const MyAllReview = () => {
     );
 };
 
-export default MyAllReview;
+export default AllReviews;
