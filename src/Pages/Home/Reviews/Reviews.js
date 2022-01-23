@@ -29,6 +29,13 @@ const Reviews = () => {
                     slidesToShow: 1,
                     slidesToScroll: 1
                 }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
             }
         ]
     };

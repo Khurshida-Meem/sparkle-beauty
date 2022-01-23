@@ -26,6 +26,7 @@ import AddProduct from '../AddProduct/AddProduct';
 import useAuth from '../../../hooks/useAuth';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AdminRoute from '../../SignIn/AdminRoute/AdminRoute';
+import AllOrders from '../AllOrders/AllOrders';
 
 const drawerWidth = 240;
 
@@ -55,17 +56,21 @@ function Dashboard(props) {
                     <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}`}><ListItemText primary="Dashboard" /></Link>
                 </ListItem>
                 <Divider />
-                <ListItem>
+                {admin || <Box><ListItem>
                     <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/pay`}><ListItemText primary="Pay" /></Link>
                 </ListItem>
-                <Divider />
-                <ListItem>
+                    <Divider /></Box>}
+                {admin || <Box><ListItem>
                     <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/reviews`}><ListItemText primary="Reviews" /></Link>
                 </ListItem>
-                <Divider />
+                    <Divider /></Box>}
 
                 {/* for admin view */}
                 {admin && <Box>
+                    <ListItem>
+                        <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/all_orders`}><ListItemText primary="Manage All Orders" /></Link>
+                    </ListItem>
+                    <Divider />
                     <ListItem>
                         <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/make_admin`}><ListItemText primary="Make Admin" /></Link>
                     </ListItem>
@@ -78,6 +83,7 @@ function Dashboard(props) {
                 <ListItem>
                     <Button onClick={logOut} color="inherit">Sign Out</Button>
                 </ListItem>
+                <Divider />
             </List>
 
         </div>
@@ -150,7 +156,8 @@ function Dashboard(props) {
                 <Container>
                     <Switch>
                         <Route exact path={path}>
-                            <MyOrders></MyOrders>
+                            {admin ? <MakeAdmin></MakeAdmin> : <MyOrders></MyOrders>}
+
                         </Route>
                         <Route path={`${path}/reviews`} >
                             <MyReview></MyReview>
@@ -159,6 +166,9 @@ function Dashboard(props) {
                             <Pay></Pay>
                         </Route>
                         {/* for admin */}
+                        <AdminRoute path={`${path}/all_orders`} >
+                            <AllOrders></AllOrders>
+                        </AdminRoute>
                         <AdminRoute path={`${path}/make_admin`} >
                             <MakeAdmin></MakeAdmin>
                         </AdminRoute>
