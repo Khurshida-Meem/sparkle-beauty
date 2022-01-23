@@ -14,7 +14,7 @@ const AllReviews = () => {
                 }
 
             })
-    }, [reviews])
+    }, [])
 
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure, you want to delete?');
@@ -35,10 +35,23 @@ const AllReviews = () => {
         }
     }
 
+    const handleSearch = event => {
+        const searchText = event.target.value;
+        const machedreview = reviews.filter(review => review.email.toLowerCase().includes(searchText.toLowerCase()));
+        setReviews(machedreview);
+
+    }
+
     return (
         <Container>
             <div style={{ textAlign: 'center' }}>
                 <h2>All Reviews</h2>
+            </div>
+            <div>
+                <input
+                    onChange={handleSearch}
+                    type="text"
+                    placeholder="Search user Review" />
             </div>
             <div>
                 <TableContainer component={Paper}>
