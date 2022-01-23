@@ -20,26 +20,14 @@ const AllOrders = () => {
                 }
 
             })
-    }, [])
+    }, [orders])
 
-    const handleSearch = event => {
-        const searchText = event.target.value;
-        const machedorder = orders.filter(order => order.email.toLowerCase().includes(searchText.toLowerCase()));
-        setOrders(machedorder);
-
-    }
 
 
     return (
         <Container sx={{ width: '100%', typography: 'body1' }}>
             <h2>Orders: {orders.length}</h2>
 
-            <div>
-                <input
-                    onChange={handleSearch}
-                    type="text"
-                    placeholder="Search Orders" />
-            </div>
             <TableContainer component={Paper}>
                 <Table sx={{}} aria-label="Appointments table">
                     <TableHeadComponent></TableHeadComponent>
