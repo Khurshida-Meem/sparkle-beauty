@@ -27,6 +27,7 @@ import useAuth from '../../../hooks/useAuth';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AdminRoute from '../../SignIn/AdminRoute/AdminRoute';
 import AllOrders from '../AllOrders/AllOrders';
+import OrderByCatagory from '../AllOrders/OrderByCatagory';
 
 const drawerWidth = 240;
 
@@ -69,6 +70,10 @@ function Dashboard(props) {
                 {admin && <Box>
                     <ListItem>
                         <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/all_orders`}><ListItemText primary="Manage All Orders" /></Link>
+                    </ListItem>
+                    <Divider />
+                    <ListItem>
+                        <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/orders_category`}><ListItemText primary="Orders By Category" /></Link>
                     </ListItem>
                     <Divider />
                     <ListItem>
@@ -168,6 +173,9 @@ function Dashboard(props) {
                         {/* for admin */}
                         <AdminRoute path={`${path}/all_orders`} >
                             <AllOrders></AllOrders>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/orders_category`} >
+                            <OrderByCatagory></OrderByCatagory>
                         </AdminRoute>
                         <AdminRoute path={`${path}/make_admin`} >
                             <MakeAdmin></MakeAdmin>

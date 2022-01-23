@@ -21,7 +21,7 @@ const SingleProductDetail = () => {
     const initialInfo = { userName: user.displayName, email: user.email }
     // set user information in state to store in database
     const [order, setOrder] = useState(initialInfo);
-    const status = 'pending';
+    const status = 'Pending';
     const handleOnChange = e => {
         const field = e.target.name;
         const value = e.target.value;
