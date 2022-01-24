@@ -29,6 +29,7 @@ import AdminRoute from '../../SignIn/AdminRoute/AdminRoute';
 import AllOrders from '../AllOrders/AllOrders';
 import OrderByCatagory from '../AllOrders/OrderByCatagory';
 import AllReviews from '../AllReviews/AllReviews';
+import AllProducts from '../AllProducts/AllProducts';
 
 const drawerWidth = 240;
 
@@ -83,6 +84,10 @@ function Dashboard(props) {
                     <Divider />
                     <ListItem>
                         <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/add_product`}><ListItemText primary="Add Product" /></Link>
+                    </ListItem>
+                    <Divider />
+                    <ListItem>
+                        <Link style={{ textDecoration: 'none', color: 'black' }} color="inherit" to={`${url}/manage_products`}><ListItemText primary="Manage All Products" /></Link>
                     </ListItem>
                     <Divider />
                     <ListItem>
@@ -190,6 +195,9 @@ function Dashboard(props) {
                         </AdminRoute>
                         <AdminRoute path={`${path}/all_reviews`} >
                             <AllReviews></AllReviews>
+                        </AdminRoute>
+                        <AdminRoute path={`${path}/manage_products`} >
+                            <AllProducts></AllProducts>
                         </AdminRoute>
                     </Switch>
                 </Container>

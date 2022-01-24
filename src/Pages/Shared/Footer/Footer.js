@@ -13,7 +13,7 @@ const Footer = () => {
                 <Toolbar>
                     <Box>
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                            <img src={img} alt="" height='150px' />
+                            <img src={img} alt="" className='w-25' />
                             <Typography variant="h5" sx={{ ml: -2 }}>
                                 Sparkle Beauty <br /> We Care Your Smile
                             </Typography>
