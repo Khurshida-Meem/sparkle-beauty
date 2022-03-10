@@ -20,14 +20,15 @@ const About = () => {
                     <Box>
                         <Typography variant="body2" gutterBottom>
                             Your top source for all things makeup. Check out the newest cosmetics, from the best foundation, mascara and eyeliner to a life-changing foundation, concealer and face powder. Learn how to apply makeup like the pros with expert DIY tutorials and tips from celebrity makeup artists. Discover the hottest fashion week beauty trends and make them your own by following the latest news about makeup trends and must-have products.
+                            Your top source for all things makeup. Check out the newest cosmetics, from the best foundation, mascara and eyeliner to a life-changing foundation, concealer and face powder. Learn how to apply makeup like the pros with expert DIY tutorials and tips from celebrity makeup artists. Discover the hottest fashion week beauty trends and make them your own by following the latest news about makeup trends and must-have products.
                         </Typography>
                     </Box>
                 </Grid>
-                <Grid container xs={12} sm={6} md={6}>
+                <Grid container xs={12} sm={6} md={6} sx={{ pl: 2 }} >
                     <Grid container item >
                         <img src={about1} alt="" height="250px" width="100%" />
                     </Grid>
-                    <Grid container item spacing={2} sx={{ mt: 1 }}>
+                    <Grid container item spacing={1} sx={{ mt: 1 }}>
                         <Grid item xs={4} >
                             <img src={about2} alt="" height="100px" width="100%" />
                         </Grid>
