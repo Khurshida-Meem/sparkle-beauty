@@ -3,7 +3,7 @@ import { Box } from '@mui/system';
 import React, { useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
 import useAuth from '../../../../hooks/useAuth';
-import img from '../../../../images/login.png'
+import img from '../../../../images/login.svg'
 import GoogleIcon from '@mui/icons-material/Google';
 import { Link } from 'react-router-dom';
 import { pink } from '@mui/material/colors';
@@ -61,21 +61,22 @@ const SignIn = () => {
                                     onChange={handleOnChange}
                                     variant="standard" />
 
-                                <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Sign In</Button>
+                                <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained" style={{ backgroundColor: '#ff8ba7', color: '#33272a', fontWeight: 'bold' }}>Sign In</Button>
 
                             </form>
                         </Box>
                         {error && <Box sx={{ textAlign: 'center' }}>
                             <Alert severity="error">{error}</Alert>
                         </Box>}
+                        <hr />
                         <Box sx={{ textAlign: 'center' }}>
-                            <Button onClick={handleGoogleLogin} variant="contained"><GoogleIcon /> Google Sign In</Button>
+                            <Button onClick={handleGoogleLogin} variant="contained" style={{ backgroundColor: '#ff8ba7', color: '#33272a', fontWeight: 'bold' }}><GoogleIcon /> Google Sign In</Button>
+                        </Box>
+                        <Box sx={{ textAlign: 'center', my: 2 }}>
+                            <Link to='/sign_up' style={{ textDecoration: 'none', color: "#33272a" }} >New to Sparkle Beauty?</Link>
                         </Box>
                         <Box sx={{ textAlign: 'center' }}>
-                            <Link to='/sign_up'>New to Sparkle Beauty?</Link>
-                        </Box>
-                        <Box sx={{ textAlign: 'center' }}>
-                            <Link to='/'><HomeIcon sx={{ color: pink[500] }} /> Back to Home</Link>
+                            <Link to='/' style={{ textAlign: "center", textDecoration: 'none', color: "#33272a", display: "flex", alignItems: "center", justifyContent: "center" }} ><HomeIcon /> <span>Back to Home</span></Link>
                         </Box>
                     </Grid>
                     <Grid item xs={12} md={6} lg={6}>

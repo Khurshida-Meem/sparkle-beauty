@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Button, Container, Grid, TextField, Typography } from '@mui/material';
 import { Box } from '@mui/system';
-import img from '../../../../images/login.png'
+import img from '../../../../images/login.svg'
 import useAuth from '../../../../hooks/useAuth';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -70,19 +70,20 @@ const SignUp = () => {
                                     onChange={handleOnChange}
                                     variant="standard" />
 
-                                <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Sign Up</Button>
+                                <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained" style={{ backgroundColor: '#ff8ba7', color: '#33272a', fontWeight: 'bold' }}>Sign Up</Button>
 
                             </form>
                         </Box>
+                        <hr />
 
                         {error && <Box sx={{ textAlign: 'center' }}>
                             <Alert severity="error">{error}</Alert>
                         </Box>}
-                        <Box sx={{ textAlign: 'center' }}>
-                            <Link to='/sign_in'>Already Registered?</Link>
+                        <Box sx={{ textAlign: 'center', my: 2 }}>
+                            <Link to='/sign_in' style={{ textDecoration: 'none', color: "#33272a" }}>Already Registered?</Link>
                         </Box>
                         <Box sx={{ textAlign: 'center' }}>
-                            <Link to='/'><HomeIcon sx={{ color: pink[500] }} /> Back to Home</Link>
+                            <Link to='/' style={{ textAlign: "center", textDecoration: 'none', color: "#33272a", display: "flex", alignItems: "center", justifyContent: "center" }} ><HomeIcon /> <span>Back to Home</span></Link>
                         </Box>
                     </Grid>
                     <Grid item xs={12} md={6} lg={6}>
