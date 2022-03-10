@@ -5,7 +5,6 @@ import img from '../../../../images/login.svg'
 import useAuth from '../../../../hooks/useAuth';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
-import { pink } from '@mui/material/colors';
 import HomeIcon from '@mui/icons-material/Home';
 
 const SignUp = () => {

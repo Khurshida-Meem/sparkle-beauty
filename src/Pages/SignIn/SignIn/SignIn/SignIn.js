@@ -6,7 +6,6 @@ import useAuth from '../../../../hooks/useAuth';
 import img from '../../../../images/login.svg'
 import GoogleIcon from '@mui/icons-material/Google';
 import { Link } from 'react-router-dom';
-import { pink } from '@mui/material/colors';
 import HomeIcon from '@mui/icons-material/Home';
 
 const SignIn = () => {
