@@ -68,7 +68,7 @@ const SignIn = () => {
                             <Alert severity="error">{error}</Alert>
                         </Box>}
                         <hr />
-                        <Box sx={{ textAlign: 'center' }}>
+                        <Box sx={{ textAlign: 'center', mt: 1 }}>
                             <Button onClick={handleGoogleLogin} variant="contained" style={{ backgroundColor: '#ff8ba7', color: '#33272a', fontWeight: 'bold' }}><GoogleIcon /> Google Sign In</Button>
                         </Box>
                         <Box sx={{ textAlign: 'center', my: 2 }}>

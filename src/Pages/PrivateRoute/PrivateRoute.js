@@ -10,7 +10,7 @@ const PrivateRoute = ({ children, ...rest }) => {
     if (isLoading) {
         // spinner
         return (
-            <div style={{ textAlign: 'center', marginTop: '16px' }}>
+            <div style={{ marginTop: '16px' }}>
                 <Loader type="BallTriangle" color="#f8a5b8" height={80} width={80} />
             </div>
         )

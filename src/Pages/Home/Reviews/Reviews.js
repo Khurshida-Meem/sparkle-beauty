@@ -55,7 +55,6 @@ const Reviews = () => {
                     </Review>)
                 }
             </Slider>
-
         </Container>
 
     );
